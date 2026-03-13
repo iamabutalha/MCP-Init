@@ -1,0 +1,51 @@
+[
+  {
+    "id": 1,
+    "name": "Alice Johnson",
+    "email": "alice.johnson@example.com",
+    "address": "123 Maple Street, Springfield",
+    "phone": "+1-555-1234"
+  },
+  {
+    "id": 2,
+    "name": "Bob Smith",
+    "email": "bob.smith@example.com",
+    "address": "456 Oak Avenue, Metropolis",
+    "phone": "+1-555-5678"
+  },
+  {
+    "id": 3,
+    "name": "Carol Lee",
+    "email": "carol.lee@example.com",
+    "address": "789 Pine Road, Gotham",
+    "phone": "+1-555-9012"
+  },
+  {
+    "id": 4,
+    "name": "Talha",
+    "email": "iamkhankhalil39@gmail.com",
+    "address": "Kandi Bala Palosi Maghdarzai Opposite Agriculture University Peshawar",
+    "phone": "03309772275"
+  },
+  {
+    "id": 5,
+    "name": "Talha",
+    "email": "iamkhankhalil39@gmail.com",
+    "address": "Kandi Bala Palosi Maghdarzai Opposite Agriculture University Peshawar",
+    "phone": "03309772275"
+  },
+  {
+    "id": 6,
+    "name": "Talha",
+    "email": "talha@gmail.com",
+    "address": "pass",
+    "phone": "pass"
+  },
+  {
+    "id": 7,
+    "name": "demo",
+    "email": "demo",
+    "address": "demo",
+    "phone": "demo"
+  }
+]

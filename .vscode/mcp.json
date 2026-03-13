@@ -1,0 +1,18 @@
+{
+  "servers": {
+    "add-user-demo": {
+      "type": "stdio",
+      "command": "node",
+      "args": ["server/index.js"],
+      "cwd": "${workspaceFolder}",
+      "dev": {
+        "watch": "**/*.js",
+        "debug": {
+          "type": "node",
+          "runtimeArgs": ["--inspect=9229"]
+        }
+      }
+    }
+  },
+  "inputs": []
+}
