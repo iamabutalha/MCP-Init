@@ -14,5 +14,6 @@
       }
     }
   },
-  "inputs": []
+  "inputs": [],
+  "sampling": {}
 }

@@ -96,7 +96,9 @@ server.tool('create-user', "create a new user in the database", {
 
 })
 
-server.tool("create-random-user", "Create a random user with fake data", {
+server.tool("create-random-user", "Create a random user with fake data", 
+    {},
+    {
     title: "Create user",
     readOnlyHint: false,
     destructiveHint: false,
@@ -111,12 +113,18 @@ server.tool("create-random-user", "Create a random user with fake data", {
                 role: "user",
                 content: {
                     type: "text",
-                    text: "Generate a fake user data. The user should have a realsitic name, email, address and phone number. Return this data as a JSON object with no other text or formater so it can be used with JSON.parse having an id also"
+                    text: "Generate a fake user data. The user should have a realsitic name, email, address and phone number. Return this data as a JSON object with no other text or formater so it can be used with JSON.parse"
                 }
             }],
             maxTokens: 1024
         }
     }, CreateMessageResultSchema)
+
+    
+   process.stderr.write("Full res: " + JSON.stringify(res, null, 2) + "\n")
+
+
+    
 
     if (res.content.type !== "text") {
         return {
@@ -125,7 +133,20 @@ server.tool("create-random-user", "Create a random user with fake data", {
     }
 
     try {
-        const fakeUser = JSON.parse(res.content.text.trim().replace(/^```json/, "").replace(/```$/, "")).trim()
+        let text =  res.content.text
+        // remove markdowm
+        text = text
+        .replace(/```json\s*/gi, "")
+        .replace(/```\s*/g, "")
+        .trim();
+
+        // extract JSON object
+        const jsonMAtch = text.match(/\{[\s\S]*\}/)
+
+        if (!jsonMAtch) {
+            throw new Error("NO json found in model response")
+        }
+        const fakeUser = JSON.parse(jsonMAtch[0])
 
         const id = await createUser(fakeUser)
 
@@ -135,6 +156,7 @@ server.tool("create-random-user", "Create a random user with fake data", {
             }]
         }
     } catch (error) {
+         console.error("JSON Parse Error:", res.content.text);
         return {
             content: [{
                 type: "text", text: "Failed to generate user data",
